@@ -1,0 +1,3 @@
+Ensure,Name,Enabled,Profile,Direction,Action
+Present,"RemoteDesktop-UserMode-In-TCP",True,Any,Inbound,Allow
+Present,"RemoteDesktop-UserMode-In-UDP",True,Any,Inbound,Allow

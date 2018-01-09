@@ -1,0 +1,2 @@
+Type,Recurse,SourcePath,MatchSource,Force,DestinationPath,Ensure
+Directory,false,,false,false,C:\TestFolder,Present

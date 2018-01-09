@@ -1,0 +1,2 @@
+Ensure,Path,Arguments,Name,ProductId,LogPath
+Present,"\\PullServerName\SomeInstaller.msi","SomeArguments","SomeInstaller","A GUID","C:\Windows\Temp\TheLogs.log"

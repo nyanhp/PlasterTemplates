@@ -1,0 +1,10 @@
+Key,ValueName,ValueType,ValueData,Hex,Ensure
+"HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server","Enabled","DWORD","0",false,Present
+"HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client","DisabledByDefault","DWORD","1",false,Present
+"HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client","Enabled","DWORD","0",false,Present
+"HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server","DisabledByDefault","DWORD","1",false,Present
+"HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server","Enabled","DWORD","0",false,Present
+"HKLM:\SOFTWARE\Microsoft\.NETFramework\v2.0.50727","SystemDefaultTlsVersions","DWORD",1,false,Present
+"HKLM:\SOFTWARE\Microsoft\.NETFramework\v2.0.50727","SchUseStrongCrypto","DWORD",1,false,Present
+"HKLM:\SOFTWARE\WoW6432Node\Microsoft\.NETFramework\v2.0.50727","SystemDefaultTlsVersions","DWORD",1,false,Present
+"HKLM:\SOFTWARE\WoW6432Node\Microsoft\.NETFramework\v2.0.50727","SchUseStrongCrypto","DWORD",1,false,Present

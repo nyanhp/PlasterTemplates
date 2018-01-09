@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Item" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>DSCCompositeResource</name>
+    <id>419d1ea8-7913-479b-884a-db543492c8cb</id>
+    <version>1.0.0</version>
+    <title>DSC Composite Resource Template</title>
+    <description></description>
+    <author>Jan-Hendrik Peters</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="FullName" type="user-fullname" prompt="Module author's' name" default="$env:USERNAME"/>
+    <parameter name="CompositeResourceName" type="text" prompt="Composite resource name" />
+    <parameter name="Version" type="text" prompt="Initial module version" default="0.0.1" />
+    <parameter name="VersionResource" type="choice" prompt="Select type of version info">
+      <choice label='&amp;File'
+              help="Stores version info in file resource"
+              value="File"
+              />
+      <choice label='&amp;Registry'
+              help="Stores version info in registry resource"
+              value="Registry"
+              />
+      <choice label='&amp;None'
+              help="Does not store version info"
+              value="None"
+              />
+    </parameter>
+  </parameters>
+  <content>
+    <message>Creating folder structure</message>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}'/>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources'/>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig'/>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\FileServerConfig'/>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\WebServerConfig'/>
+    <message>Deploying common files</message>    
+    <file source='BaseConfig\BaseConfig.schema.psm1' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig\BaseConfig.schema.psm1'/>    
+    <file source='BaseConfig\WithFileVersionBaseConfig.schema.psm1'
+          destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig\BaseConfig.schema.psm1'
+          condition='$PLASTER_PARAM_VersionResource -eq "File"'
+          />    
+    <file source='BaseConfig\WithRegVersionBaseConfig.schema.psm1'
+          destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig\BaseConfig.schema.psm1'
+          condition='$PLASTER_PARAM_VersionResource -eq "Registry"'
+          />    
+    <file source='FileServerConfig\FileServerConfig.schema.psm1' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\FileServerConfig\FileServerConfig.schema.psm1'/>    
+    <file source='WebServerConfig\WebServerConfig.schema.psm1' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\WebServerConfig\WebServerConfig.schema.psm1'/>
+    <file source='CompositeResourceSample.psm1' destination="${PLASTER_PARAM_CompositeResourceName}\${PLASTER_PARAM_CompositeResourceName}.psm1"/>
+    <message>Creating manifests</message>
+    <newModuleManifest
+      destination = "${PLASTER_PARAM_CompositeResourceName}\${PLASTER_PARAM_CompositeResourceName}.psd1"
+      author = "${PLASTER_PARAM_FullName}"
+      moduleVersion='$PLASTER_PARAM_Version'
+      rootModule='${PLASTER_PARAM_CompositeResourceName}.psm1'
+      encoding='UTF8-NoBOM'
+     />
+     <newModuleManifest
+      destination = "${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig\BaseConfig.psd1"
+      author = "${PLASTER_PARAM_FullName}"
+      moduleVersion='$PLASTER_PARAM_Version'
+      rootModule='BaseConfig.schema.psm1'
+      encoding='UTF8-NoBOM'
+     />
+     <newModuleManifest
+      destination = "${PLASTER_PARAM_CompositeResourceName}\DSCResources\WebServerConfig\WebServerConfig.psd1"
+      author = "${PLASTER_PARAM_FullName}"
+      moduleVersion='$PLASTER_PARAM_Version'
+      rootModule='WebServerConfig.schema.psm1'
+      encoding='UTF8-NoBOM'
+     />
+     <newModuleManifest
+      destination = "${PLASTER_PARAM_CompositeResourceName}\DSCResources\FileServerConfig\FileServerConfig.psd1"
+      author = "${PLASTER_PARAM_FullName}"
+      moduleVersion='$PLASTER_PARAM_Version'
+      rootModule='FileServerConfig.schema.psm1'
+      encoding='UTF8-NoBOM'
+     />
+  </content>
+</plasterManifest>

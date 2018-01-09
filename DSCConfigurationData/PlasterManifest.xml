@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest 
+  schemaVersion="1.1"
+  templateType="Item" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>ConfigurationDataTemplate</name>
+    <id>3fe68ed4-5bc4-4211-8da0-169fef928ecd</id>
+    <version>1.0.0</version>
+    <title>DSC Configuration Data Template</title>
+    <description>Plaster template that makes use of the module DSCConfigurationManager</description>
+    <author>Jan-Hendrik Peters</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="FullName" type="text" prompt="Module author's' name" default="$env:USERNAME"/>
+    <parameter name="MachineType" type="text" prompt="Which machine type should this be for" />
+    <parameter name="ConfigurationDataVersion" type="text" prompt="Initial module version" default="0.0.1" />
+  </parameters>
+  <content>
+    <message>      Creating folder structure    </message>
+    <file source='' destination='${PLASTER_PARAM_MachineType}\config'/>
+    <message>      Deploying common files    </message>
+    <file source='config\Features.txt' destination='${PLASTER_PARAM_MachineType}\config\Roles_${PLASTER_PARAM_MachineType}_Features.txt'/>
+    <file source='config\Files.csv' destination='${PLASTER_PARAM_MachineType}\config\Roles_${PLASTER_PARAM_MachineType}_Files.csv'/>
+    <file source='config\FirewallRules.csv' destination='${PLASTER_PARAM_MachineType}\config\Roles_${PLASTER_PARAM_MachineType}_FirewallRules.csv'/>
+    <file source='config\Registry.csv' destination='${PLASTER_PARAM_MachineType}\config\Roles_${PLASTER_PARAM_MachineType}_Registry.csv'/>
+    <file source='config\Packages.csv' destination='${PLASTER_PARAM_MachineType}\config\Roles_${PLASTER_PARAM_MachineType}_Packages.csv'/>
+    <file source='config\WebSites.psd1' destination='${PLASTER_PARAM_MachineType}\config\Roles_${PLASTER_PARAM_MachineType}_WebSites.psd1'/>
+    <file source='config\GlobalConfigurationData.psd1' destination='${PLASTER_PARAM_MachineType}\config\GlobalConfigurationData.psd1'/>
+    <file source='config\Nodes.csv' destination='${PLASTER_PARAM_MachineType}\config\Nodes.csv'/>
+    <file source='New-DscConfigurationMof.ps1' destination='${PLASTER_PARAM_MachineType}\New-DscConfigurationMof.ps1'/>
+  </content>
+</plasterManifest>
