@@ -36,6 +36,8 @@
     <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig'/>
     <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\FileServerConfig'/>
     <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\WebServerConfig'/>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\Tests\Unit'/>
+    <file source='' destination='${PLASTER_PARAM_CompositeResourceName}\Tests\Integration'/>
     <message>Deploying common files</message>    
     <file source='BaseConfig\BaseConfig.schema.psm1' destination='${PLASTER_PARAM_CompositeResourceName}\DSCResources\BaseConfig\BaseConfig.schema.psm1'/>    
     <file source='BaseConfig\WithFileVersionBaseConfig.schema.psm1'

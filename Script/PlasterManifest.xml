@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Item" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>ScriptTemplate</name>
+    <id>c26cfc07-d40d-4ff2-9150-40f1adad1bdd</id>
+    <version>1.0.0</version>
+    <title>Skript-Vorlage</title>
+    <description>Plaster-Vorlage, um Skripte zu erstellen</description>
+    <author>Jan-Hendrik Peters</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="FullName" type="text" prompt="Name" default="$env:USERNAME" />
+    <parameter name="ScriptName" type="text" prompt="Script name" />
+    <parameter name="Description" type="text" prompt="What is the purpose of this script?" />
+    <parameter name="ScriptVersion" type="text" prompt="ScriptVersion" default="0.0.1" />
+    <parameter name='UseParameters' type='choice' default='0' store='text' prompt='Do you need parameters?'>
+      <choice label='&amp;Yes' help="Inserts parameter block" value="Yes"/>
+      <choice label='&amp;No' help="Skip parameter block" value="No"/>
+    </parameter>
+  </parameters>
+  <content>
+    <message>      Preparing folders... </message>
+    <file source='' destination='Tests' />
+    <message>      Preparing files...    </message>
+    <templateFile source='TemplateScript.ps1' destination='${PLASTER_PARAM_ScriptName}.ps1' openInEditor="true"/>
+    <templateFile source='TemplateTest.ps1' destination='Tests\${PLASTER_PARAM_ScriptName}.Test.ps1' />
+  </content>
+</plasterManifest>
